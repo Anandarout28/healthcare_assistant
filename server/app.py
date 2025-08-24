@@ -45,7 +45,7 @@ async def predict_skin_disease(file: UploadFile = File(...)):
         # Read the image and preprocess
         contents = await file.read()
         image = Image.open(io.BytesIO(contents)).convert("RGB")
-        image = image.resize((128, 128))
+        image = image.resize((224, 224))
         img_array = np.array(image, dtype=np.float32)
         img_array = np.expand_dims(img_array, axis=0)
         img_array = img_array / 255.0
